@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 type OnOffPropsType = {
-    onOff: boolean
-    onChange: (onOff: boolean) => void
+    onChange: (switchOn: boolean) => void
 }
-export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange}) => {
+export const UncontroledOnOff: React.FC<OnOffPropsType> = ({onChange}) => {
+  const [onOff, setOnOff] = useState<boolean>(false)
 
     const onStyle = {
         display: 'inline-block',
@@ -36,16 +36,18 @@ export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange}) => {
 
     }
 
-function onChangeOn() {
-    onChange(true)
-}
-function onChangeOff() {
-    onChange(false)
-}
+    const takeOn = () => {
+        setOnOff(true)
+        onChange(true)
+    }
+    const takeOff = () => {
+        setOnOff(false)
+        onChange(false)
+    }
 
     return <div>
-        <div style={onStyle} onClick={onChangeOn}>ON</div>
-        <div style={offStyle} onClick={onChangeOff}>OFF</div>
+        <div style={onStyle} onClick={takeOn}>ON</div>
+        <div style={offStyle} onClick={takeOff}>OFF</div>
         <div style={indicatorStyle}></div>
     </div>
 }

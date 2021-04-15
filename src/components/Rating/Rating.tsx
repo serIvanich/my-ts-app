@@ -1,5 +1,5 @@
 import React from "react";
-import { ValueType } from "../UncontroledRaiting/UncontroledRaiting";
+import {ValueType} from "../UncontroledRaiting/UncontroledRaiting";
 
 type RatingPropsType = {
     value: ValueType
@@ -28,16 +28,12 @@ type StarPropsType = {
 
 function Star(props: StarPropsType) {
     console.log('Star rendering')
-
-
-        return <span onClick={() => {props.onClick(props.value)}}>
-            {props.selected? <b> star </b> : ' start ' }
+    const onClickStar = () => {
+        props.onClick(props.value)
+    }
+    return <span onClick={onClickStar}>
+                {props.selected ? <b> star </b> : ' start '}
             </span>
-       
-
-
-
-
 
 
 }
