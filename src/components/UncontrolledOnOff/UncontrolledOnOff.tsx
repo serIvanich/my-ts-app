@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 
-type OnOffPropsType = {
+export type UnOnOffPropsType = {
+    defaultValue?: boolean
     onChange: (switchOn: boolean) => void
 }
-export const UncontroledOnOff: React.FC<OnOffPropsType> = ({onChange}) => {
-  const [onOff, setOnOff] = useState<boolean>(false)
+export const UncontroledOnOff: React.FC<UnOnOffPropsType> = (props) => {
+  const [onOff, setOnOff] = useState<boolean>(props.defaultValue ? props.defaultValue : false)
 
     const onStyle = {
         display: 'inline-block',
@@ -38,11 +39,11 @@ export const UncontroledOnOff: React.FC<OnOffPropsType> = ({onChange}) => {
 
     const takeOn = () => {
         setOnOff(true)
-        onChange(true)
+        props.onChange(true)
     }
     const takeOff = () => {
         setOnOff(false)
-        onChange(false)
+        props.onChange(false)
     }
 
     return <div>

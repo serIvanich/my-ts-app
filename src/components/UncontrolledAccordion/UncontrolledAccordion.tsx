@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 
-type UncontroledAccordionPropsType = {
+export type UncontroledAccordionPropsType = {
     titleValue: string
+    textSize?: number
     
 }
 
@@ -16,7 +17,7 @@ export function UncontroledAccordion(props: UncontroledAccordionPropsType) {
     
     return (
         <div style={containerstyle}>
-            <AccordionTitle title={props.titleValue}
+            <AccordionTitle title={props.titleValue} textSize={props.textSize}
                             onClick={() => setCollapsed(!collapsed)} />
             
             {collapsed && <AccordionBody/>}
@@ -29,12 +30,13 @@ export function UncontroledAccordion(props: UncontroledAccordionPropsType) {
 type AccordionTitlePropsType = {
     title: string
     onClick: () => void
+    textSize?: number
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log('AccordionTitle rendering')
     
-    return <h3 onClick={() => props.onClick()}>{props.title}</h3>
+    return <span style={{fontSize: props.textSize? props.textSize : '30px'}} onClick={() => props.onClick()}>{props.title}</span>
 }
 
 function AccordionBody() {
