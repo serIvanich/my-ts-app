@@ -7,7 +7,7 @@ export type UnRatingPropsType = {
     onChange: (value: ValueType) => void
 }
 
-export const UncontroledRating: React.FC<UnRatingPropsType> = (props) => {
+export const UncontrolledRating: React.FC<UnRatingPropsType> = (props) => {
     console.log('Rating rendering')
     const [value, setValue] = useState<ValueType>(props.defaultValue ? props.defaultValue : 0)
     return <div>

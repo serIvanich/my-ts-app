@@ -1,15 +1,15 @@
 import {Meta, Story} from "@storybook/react";
 import React from "react";
 import {action} from "@storybook/addon-actions";
-import {UncontroledRating, UnRatingPropsType} from "../UncontroledRaiting/UncontroledRaiting";
+import {UncontrolledRating, UnRatingPropsType} from ".//UncontrolledRaiting";
 
 export default {
     title: 'Component/UncontroledRating',
-    component: UncontroledRating,
+    component: UncontrolledRating,
 } as Meta;
 
 const callback = action('rating changed inside component')
-const Template: Story<UnRatingPropsType> = (args) => <UncontroledRating {...args} />;
+const Template: Story<UnRatingPropsType> = (args) => <UncontrolledRating {...args} />;
 
 export const EmptyRating = Template.bind({});
 EmptyRating.args = {

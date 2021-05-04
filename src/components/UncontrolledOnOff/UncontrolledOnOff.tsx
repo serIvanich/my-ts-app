@@ -4,7 +4,7 @@ export type UnOnOffPropsType = {
     defaultValue?: boolean
     onChange: (switchOn: boolean) => void
 }
-export const UncontroledOnOff: React.FC<UnOnOffPropsType> = (props) => {
+export const UncontrolledOnOff: React.FC<UnOnOffPropsType> = (props) => {
   const [onOff, setOnOff] = useState<boolean>(props.defaultValue ? props.defaultValue : false)
 
     const onStyle = {

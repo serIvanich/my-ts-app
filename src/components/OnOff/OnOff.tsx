@@ -1,10 +1,18 @@
 import React from "react";
 
-type OnOffPropsType = {
+export type OnOffPropsType = {
+    /**
+     * on or off button
+     */
     onOff: boolean
+    /**
+     * change button value
+     * @param onOff - is value of button
+     */
     onChange: (onOff: boolean) => void
+    color?: string
 }
-export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange}) => {
+export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange, color}) => {
 
     const onStyle = {
         display: 'inline-block',
@@ -13,7 +21,7 @@ export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange}) => {
         marginLeft: '5px',
         paddingLeft: '5px',
         border: '1px solid black',
-        backgroundColor: onOff ? 'green' : 'white',
+        backgroundColor: onOff ? 'green' : color? color: 'white',
 
     }
     const offStyle = {
@@ -23,7 +31,7 @@ export const OnOff: React.FC<OnOffPropsType> = ({onOff, onChange}) => {
         marginLeft: '5px',
         paddingLeft: '5px',
         border: '1px solid black',
-        backgroundColor: onOff ? 'white' : 'red',
+        backgroundColor: !onOff ? 'red': color? color: 'white',
     }
     const indicatorStyle = {
         display: 'inline-block',
@@ -40,12 +48,13 @@ function onChangeOn() {
     onChange(true)
 }
 function onChangeOff() {
+
     onChange(false)
 }
 
     return <div>
-        <div style={onStyle} onClick={onChangeOn}>ON</div>
-        <div style={offStyle} onClick={onChangeOff}>OFF</div>
+        <div style={onStyle} onClick={() => onChange(true)}>ON</div>
+        <div style={offStyle} onClick={() => onChange(false)}>OFF</div>
         <div style={indicatorStyle}></div>
     </div>
 }

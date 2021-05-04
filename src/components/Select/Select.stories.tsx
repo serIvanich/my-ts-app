@@ -1,50 +1,42 @@
 import {Meta, Story} from "@storybook/react";
 import React, {useState} from "react";
 import {action} from "@storybook/addon-actions";
-import {Rating, RatingPropsType} from "./Rating";
-import {ValueType} from "../UncontrolledRaiting/UncontrolledRaiting";
+import {Select, SelectPropsType, VisibilityType} from "./Select";
+
 
 export default {
-    title: 'Component/Rating',
-    component: Rating,
+    title: 'Component/Select',
+    component: Select,
 } as Meta;
 
-const callback = action('enter on or off')
-const Template: Story<RatingPropsType> = (args) => <Rating {...args} />;
-
-export const EmptyRating = Template.bind({});
-EmptyRating.args = {
-    value: 0,
-    onClick: callback
-}
-export const Rating1 = Template.bind({});
-Rating1.args = {
-    value: 1,
-    onClick: callback
-}
-export const Rating2 = Template.bind({});
-Rating2.args = {
-    value: 2,
-    onClick: callback
-}
-export const Rating3 = Template.bind({});
-Rating3.args = {
-    value: 3,
-    onClick: callback
-}
-export const Rating4 = Template.bind({});
-Rating4.args = {
-    value: 4,
-    onClick: callback
-}
-export const Rating5 = Template.bind({});
-Rating5.args = {
-    value: 5,
-    onClick: callback
-}
+const callback = action('want to change')
+const Template: Story<SelectPropsType> = (args) => <Select {...args} />;
 
 
-export const ChangeMode: Story<RatingPropsType> = (args) => {
-    const [value, setValue] = useState<ValueType>(0)
-    return <Rating value={value} onClick={setValue} />
+export const WorkingOptions = Template.bind({});
+WorkingOptions.args = {
+    items: [{id: '2', title: 'Olga', value: 5},
+        {id: '3', title: 'Serik', value: 7},
+        {id: '4', title: 'Gleb', value: 9}],
+    value: 'fert',
+    onChange: callback
+}
+// export const VisableOptions = Template.bind({});
+//
+// VisableOptions.args = {
+//     items: [{id: '2', title: 'Olga', value: 5},
+//         {id: '3', title: 'Serik', value: 7},
+//         {id: '4', title: 'Gleb', value: 9}],
+//     value: 'fert',
+//     onChange: callback
+// }
+
+
+export const ChangeSelect: Story<SelectPropsType> = (args) => {
+    const [myValue, setMyValue] = useState('value')
+    return <Select items={
+        [
+            {id: '2', title: 'Olga', value: 5},
+            {id: '3', title: 'Serik', value: 7},
+            {id: '4', title: 'Gleb', value: 9}]} value={myValue} onChange={ setMyValue} />
 }

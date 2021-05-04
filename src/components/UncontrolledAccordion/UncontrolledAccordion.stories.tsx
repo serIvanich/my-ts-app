@@ -1,11 +1,11 @@
 import {Meta, Story} from "@storybook/react";
 import React from "react";
-import {UncontroledAccordion, UncontroledAccordionPropsType} from "./UncontroledAccordion";
+import {UncontrolledAccordion, UncontrolledAccordionPropsType} from "./UncontrolledAccordion";
 
 
 export default {
-    title: 'Component/UncontroledAccordion',
-    component: UncontroledAccordion,
+    title: 'Component/UncontrolledAccordion',
+    component: UncontrolledAccordion,
     argTypes: {
         fontSize: {
             table: {
@@ -16,9 +16,9 @@ export default {
 } as Meta;
 
 
-export const ModeChanging: Story<UncontroledAccordionPropsType> = (args) => {
+export const ModeChanging: Story<UncontrolledAccordionPropsType> = (args) => {
 
-    return <UncontroledAccordion {...args} />
+    return <UncontrolledAccordion {...args} />
 }
 ModeChanging.args = {
     titleValue: 'Users'

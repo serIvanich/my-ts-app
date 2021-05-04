@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 
-export type UncontroledAccordionPropsType = {
+export type UncontrolledAccordionPropsType = {
     titleValue: string
     textSize?: number
     
 }
 
-export function UncontroledAccordion(props: UncontroledAccordionPropsType) {
+export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     console.log('Accordion rendering')
 
     const [collapsed, setCollapsed] = useState<boolean>(false)

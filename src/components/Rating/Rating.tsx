@@ -1,7 +1,7 @@
 import React from "react";
-import {ValueType} from "../UncontroledRaiting/UncontroledRaiting";
+import {ValueType} from "../UncontrolledRaiting/UncontrolledRaiting";
 
-type RatingPropsType = {
+export type RatingPropsType = {
     value: ValueType
     onClick: (value: ValueType) => void
 }
