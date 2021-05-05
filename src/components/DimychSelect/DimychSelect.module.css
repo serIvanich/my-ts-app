@@ -1,0 +1,19 @@
+.select span.main{
+    border: 1px solid grey;
+}
+
+.items {
+
+    position: absolute;
+    padding: 5px;
+    border: 1px solid grey;
+}
+
+.item.selected {
+    background-color: lightgreen;
+    color: firebrick;
+}
+.select span.main {
+
+    width: 55px;
+}
