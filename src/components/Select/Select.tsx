@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useState} from 'react'
+import React, {FocusEventHandler, MouseEventHandler, useState} from 'react'
 import s from './Select.module.css'
 
 type ItemsType = {
@@ -21,16 +21,20 @@ export const Select: React.FC<SelectPropsType> = (props) => {
             props.onChange(i.title)
             setVisibility('hidden')
         }
+        const outOptions = () => {
+
+            setVisibility('hidden')
+        }
 
         return <li key={i.id} className={s.optionElement} onClick={selectItem}>{i.title}</li>
     })
     const openOptions = () => {
-        setVisibility('visible')
+
+        visibility === 'hidden'
+            ? setVisibility('visible')
+            : setVisibility('hidden')
     }
-    const outOptions = (e: MouseEventHandler<HTMLDivElement>) => {
-        console.log(e)
-        // setVisibility('hidden')
-    }
+
 
     return (
         <div className={s.selectContainer}>

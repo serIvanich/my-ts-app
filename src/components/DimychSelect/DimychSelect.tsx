@@ -47,6 +47,7 @@ export const DimychSelect: React.FC<DimychSelectPropsType> = (props) => {
     const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
             for (let i = 0; i < props.items.length; i++) {
+
                 if (props.items[i].value === hoveredElementValue) {
                     const pretendentElement = e.key === 'ArrowDown'
                         ? props.items[i + 1]

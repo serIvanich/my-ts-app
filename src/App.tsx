@@ -32,7 +32,7 @@ export function App() {
             {/*                            console.log(`users value = ${value}`)*/}
             {/*                        }}*/}
             {/*/>*/}
-            {/*    UncontrolledAccordion<UncontrolledAccordion titleValue={'Menu'}/>*/}
+                UncontrolledAccordion<UncontrolledAccordion titleValue={'Menu'}/>
             {/*    UncontrolledRating<UncontrolledRating onChange={() => console.log('uncontrolled Rating want to change')}/>*/}
             {/*    Rating<Rating value={ratingValue} onClick={setRatingValue}/>*/}
             {/*    UncontrolledOnOff<UncontrolledOnOff onChange={(switchOn) => setSwitchOn(switchOn)}/>*/}
@@ -49,13 +49,13 @@ export function App() {
 
             {`\n\nDimych Select\n\n`}
 
-            <DimychSelect items={
-                [
-                {title: 'Minsk', value: '1'},
-                {title: 'Dnepr', value: '2'},
-                {title: 'Kyiv', value: '3'}
-                ]} value={valueDimSelect} onChange={setValueDimSelect}
-            />
+            {/*<DimychSelect items={*/}
+            {/*    [*/}
+            {/*    {title: 'Minsk', value: '1'},*/}
+            {/*    {title: 'Dnepr', value: '2'},*/}
+            {/*    {title: 'Kyiv', value: '3'}*/}
+            {/*    ]} value={valueDimSelect} onChange={setValueDimSelect}*/}
+            {/*/>*/}
 
         </div>)
 }
