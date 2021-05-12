@@ -41,21 +41,21 @@ export function App() {
 
             Select{`\n\n`}
 
-            {/*<Select items={[{id: '1', title: 'Valera', value: 3},*/}
-            {/*    {id: '2', title: 'Olga', value: 5},*/}
-            {/*    {id: '3', title: 'Serik', value: 7},*/}
-            {/*    {id: '4', title: 'Gleb', value: 9}]} value={valueSelect} onChange={setValueSelect}*/}
-            {/*/>*/}
+            <Select items={[{id: '1', title: 'Valera', value: 3},
+                {id: '2', title: 'Olga', value: 5},
+                {id: '3', title: 'Serik', value: 7},
+                {id: '4', title: 'Gleb', value: 9}]} value={valueSelect} onChange={setValueSelect}
+            />
 
             {`\n\nDimych Select\n\n`}
 
-            {/*<DimychSelect items={*/}
-            {/*    [*/}
-            {/*    {title: 'Minsk', value: '1'},*/}
-            {/*    {title: 'Dnepr', value: '2'},*/}
-            {/*    {title: 'Kyiv', value: '3'}*/}
-            {/*    ]} value={valueDimSelect} onChange={setValueDimSelect}*/}
-            {/*/>*/}
+            <DimychSelect items={
+                [
+                {title: 'Minsk', value: '1'},
+                {title: 'Dnepr', value: '2'},
+                {title: 'Kyiv', value: '3'}
+                ]} value={valueDimSelect} onChange={setValueDimSelect}
+            />
 
         </div>)
 }
