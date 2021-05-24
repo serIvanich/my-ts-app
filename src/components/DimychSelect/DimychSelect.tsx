@@ -1,7 +1,7 @@
 import React, {KeyboardEvent, useEffect, useState} from 'react'
 import s from './DimychSelect.module.css'
 
-type ItemsType = {
+export type ItemsType = {
 
     title: string
     value: any
@@ -33,6 +33,7 @@ export const DimychSelect: React.FC<DimychSelectPropsType> = (props) => {
         }
 
         function onMouseEnter() {
+
             setHoveredElementValue(i.value)
         }
 
