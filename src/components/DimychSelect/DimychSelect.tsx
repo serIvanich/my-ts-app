@@ -4,14 +4,14 @@ import s from './DimychSelect.module.css'
 export type ItemsType = {
 
     title: string
-    value: any
+    value: string
 
 }
 
 export type DimychSelectPropsType = {
     items: Array<ItemsType>
-    value?: any
-    onChange: (value: any) => void
+    value?: string
+    onChange: (value: string) => void
 }
 
 export const DimychSelect: React.FC<DimychSelectPropsType> = (props) => {

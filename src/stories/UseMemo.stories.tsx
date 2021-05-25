@@ -156,33 +156,82 @@ export const HelpsToExample = () => {
             },
         ]
     )
-    let newArray: Array<ItemsType> = []
-    cities.map(c => {
-            if (/^V/.test(c.cityName)) {
-                newArray.push({title: c.cityName, value: `${c.id}`})
-            }
-            return c
-        }
-    )
 
-    let valueSelect = newArray[0].value
+    // select cities who begin on V
+    const [valueOnV, setValueOnV] = useState('1')
+
+    const citiesOnV: Array<ItemsType> = useMemo(() => {
+        return cities.filter(c => /^V/.test(c.cityName)).map(c => {
+
+            console.log('map citiesOnV')
+            return {title: c.cityName, value: `${c.id}`}
+        })
+    }, [valueOnV])
 
 
-    const onChangeSelectValue = ((value: string) => {
-        debugger
-        valueSelect = value
-    })
 
+    // select cities from Ukraine
+
+    // let citiesFromUkr: Array<ItemsType> = []
+    // cities.map(c => {
+    //         console.log('map citiesFromUkr')
+    //         if (c.countryCod === 1) {
+    //             if (citiesFromUkr.length === 0) {
+    //                 citiesFromUkr = [{title: c.cityName, value: `${c.id}`}]
+    //             } else {
+    //                 citiesFromUkr = [...citiesFromUkr, {title: c.cityName, value: `${c.id}`}]
+    //             }
+    //         }
+    //     }
+    // )
+    const [valueFromUkr, setValueFromUkr] = useState('1')
+
+    const citiesFromUkr: Array<ItemsType> = useMemo(() => {
+        return cities.filter(c => c.countryCod === 1).map(c => {
+            console.log('map citiesFromUkr')
+            return {title: c.cityName, value: `${c.id}`}
+        })
+    }, [valueFromUkr])
+
+        // select cities where populations > 500 000 people
+
+    // let bigCities: Array<ItemsType> = []
+    // cities.map(c => {
+    //         console.log('map bigCities')
+    //         if (c.population > 900000) {
+    //             if (bigCities.length === 0) {
+    //                 bigCities = [{title: c.cityName, value: `${c.id}`}]
+    //             } else {
+    //                 bigCities = [...bigCities, {title: c.cityName, value: `${c.id}`}]
+    //             }
+    //         }
+    //     }
+    // )
+    const [valueBigCities, setValueBigCities] = useState('1')
+    const bigCities: Array<ItemsType> = useMemo(() => {
+        console.log('map bigCities')
+        return cities.filter(c => c.population > 900000).map(c => {
+            return {title: c.cityName,value: `${c.id}`}
+        })
+    }, [valueBigCities])
 
     return <>
         <div>
-            <button onChange={() => setCount(count + 1)}>increment number :</button>
+            <button onClick={() => setCount(count + 1)}>increment number :</button>
             <div>
                 {count}
             </div>
         </div>
+        <div style={{marginBottom: '100px'}}>
+            <DimychSelect items={citiesOnV} value={valueOnV} onChange={setValueOnV}/>
+        </div>
 
-        <DimychSelect items={newArray} value={valueSelect} onChange={onChangeSelectValue}/>
+        <div style={{marginBottom: '100px'}}>
+            <DimychSelect items={citiesFromUkr} value={valueFromUkr} onChange={setValueFromUkr}/>
+        </div>
+
+
+        <DimychSelect items={bigCities} value={valueBigCities} onChange={setValueBigCities}/>
 
     </>
 }

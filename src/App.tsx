@@ -17,7 +17,7 @@ export function App() {
     // const [collapsed, setCollapsed] = useState<boolean>(false)
     // const [switchOn, setSwitchOn] = useState<boolean>(false)
     const [valueSelect, setValueSelect] = useState<any>('none')
-    const [valueDimSelect, setValueDimSelect] = useState<any>('1')
+    const [valueDimSelect, setValueDimSelect] = useState<string>('1')
 
 
     return (
