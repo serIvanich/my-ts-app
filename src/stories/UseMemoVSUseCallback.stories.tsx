@@ -1,5 +1,5 @@
 import {Meta, Story} from "@storybook/react";
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {DimychSelect, ItemsType} from "../components/DimychSelect/DimychSelect";
 
 
@@ -169,7 +169,6 @@ export const HelpsToExample = () => {
     }, [valueOnV])
 
 
-
     // select cities from Ukraine
 
     // let citiesFromUkr: Array<ItemsType> = []
@@ -193,7 +192,7 @@ export const HelpsToExample = () => {
         })
     }, [valueFromUkr])
 
-        // select cities where populations > 500 000 people
+    // select cities where populations > 500 000 people
 
     // let bigCities: Array<ItemsType> = []
     // cities.map(c => {
@@ -211,7 +210,7 @@ export const HelpsToExample = () => {
     const bigCities: Array<ItemsType> = useMemo(() => {
         console.log('map bigCities')
         return cities.filter(c => c.population > 900000).map(c => {
-            return {title: c.cityName,value: `${c.id}`}
+            return {title: c.cityName, value: `${c.id}`}
         })
     }, [valueBigCities])
 
@@ -235,3 +234,49 @@ export const HelpsToExample = () => {
 
     </>
 }
+
+export const LikesUseCallback = () => {
+    const [count, setCount] = useState<number>(0)
+    const [books, setBooks] = useState<Array<string>>(['Javascript', 'HTML', 'CSS', 'React'])
+
+    const addBook = () => {
+        setBooks([...books, 'Angular' + new Date().getTime()])
+    }
+
+    const memoizedSetCount = useCallback(() => setCount(count + 1), [count])
+
+    const memoizedAddBook = useMemo(() => {
+        return addBook
+    }, [books])
+
+    console.log('LikesUseCallback')
+    return <>
+
+        <Count count={count} changeCount={memoizedSetCount}/>
+        <BooksMemo addBook={memoizedAddBook}/>
+    </>
+}
+type BooksSecretPropsType = {
+    addBook: () => void
+}
+
+const BooksSecret = (props: BooksSecretPropsType) => {
+    console.log('BooksSecret')
+    return <div>
+        <button onClick={props.addBook}>add book</button>
+    </div>
+}
+const BooksMemo = React.memo(BooksSecret)
+
+type CountPropsType = {
+    count: number
+    changeCount: () => void
+}
+
+const Count: React.FC<CountPropsType> = React.memo((props) => {
+    console.log('Count')
+    return <div>
+        <button onClick={props.changeCount}>+</button>
+        {props.count}
+    </div>
+})
